@@ -1,0 +1,15 @@
+{:paths
+  ["/Users/noahschairer/metabase/metabase-bigquery/src" "/Users/noahschairer/metabase/metabase-bigquery/resources"]
+
+  :deps
+  {com.google.apis/google-api-services-bigquery {:mvn/version "v2-rev20200523-1.30.9"}
+   com.google.http-client/google-http-client-jackson2 {:mvn/version "1.39.2"}}
+
+   :aliases
+   {:build
+    {:extra-deps {metabase/metabase-core {:local/root "../metabase"}
+                  metabase/build-drivers {:local/root "../metabase/bin/build-drivers"}}
+     :exec-fn    build-drivers.build-driver/build-driver!
+     :exec-args  {:driver      :bigquery_alt
+                  :project-dir "."
+                  :target-dir  "./target"}}}}
